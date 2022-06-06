@@ -1,0 +1,17 @@
+
+In this lab, we are using Ansible as our deployment tool. There are many other ways to deploy Kubernetes resources including Helm Charts, but I thought Ansible is a much easier option. Ansible uses playbooks to organize its instructions. Our playbook.yml file looks as follows:
+
+- hosts: localhost
+  tasks:
+  - name: Deploy the service
+    k8s:
+      state: present
+      definition: ""
+      validate_certs: no
+      namespace: default
+  - name: Deploy the application
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: ""
